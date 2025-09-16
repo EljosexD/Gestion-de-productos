@@ -3,5 +3,6 @@ public class Main {
         System.out.println("Inicio");
         System.out.println("Intentando conectar amigos");
         System.out.println("Fin");
+        int a = 5;
     }
 }
