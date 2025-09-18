@@ -6,8 +6,8 @@ public class Utensils extends Product{
     public Utensils() {
     }
 
-    public Utensils(int id, String name, double price, int amount, String guarantee) {
-        super(id, name, price, amount);
+    public Utensils(int id, String name, double price, int quantity, String guarantee) {
+        super(id, name, price, quantity);
         this.guarantee = guarantee;
     }
 
@@ -17,7 +17,7 @@ public class Utensils extends Product{
         System.out.println("| ID : " + this.id);
         System.out.println("| Name : " + this.name);
         System.out.println("| Price: " + this.price + " | guarantee: " + this.guarantee);
-        System.out.println("| Amount : " + this.amount);
+        System.out.println("| quantity : " + this.quantity);
         System.out.println("---------------------------------");
     }
 }

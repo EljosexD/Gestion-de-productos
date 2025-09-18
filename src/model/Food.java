@@ -6,10 +6,19 @@ public class Food extends Product{
     public Food() {
     }
 
-    public Food(int id, String name, double price, int amount, String expirationDate) {
-        super(id, name, price, amount);
+    public Food(int id, String name, double price, int quantity, String expirationDate) {
+        super(id, name, price, quantity);
         this.expirationDate = expirationDate;
     }
+
+    public String getExpirationDate() {
+        return expirationDate;
+    }
+
+    public void setExpirationDate(String expirationDate) {
+        this.expirationDate = expirationDate;
+    }
+
 
 
     @Override
@@ -18,7 +27,7 @@ public class Food extends Product{
         System.out.println("| ID : " + this.id);
         System.out.println("| Name : " + this.name);
         System.out.println("| Price: " + this.price + " | Expiration date: " + this.expirationDate);
-        System.out.println("| Amount : " + this.amount);
+        System.out.println("| quantity : " + this.quantity);
         System.out.println("---------------------------------");
     }
 }
