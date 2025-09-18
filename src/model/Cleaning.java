@@ -1,6 +1,8 @@
 package model;
 
-public class Cleaning extends Product {
+import interfaces.IProduct;
+
+public class Cleaning extends Product implements IProduct {
     private int riskLevel;
 
     public Cleaning() {
@@ -10,6 +12,7 @@ public class Cleaning extends Product {
         super(id, name, price, quantity);
         this.riskLevel = riskLevel;
     }
+
 
     @Override
     public void description() {
@@ -21,4 +24,8 @@ public class Cleaning extends Product {
         System.out.println("---------------------------------");
     }
 
+    @Override
+    public String csvDescriptionProduct() {
+        return  (this.id + "," + this.name + "," + this.price + "," + quantity + "," + "Cleaning" + "," + this.riskLevel);
+    }
 }

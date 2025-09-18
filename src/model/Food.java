@@ -1,6 +1,8 @@
 package model;
 
-public class Food extends Product{
+import interfaces.IProduct;
+
+public class Food extends Product implements IProduct {
     private String expirationDate;
 
     public Food() {
@@ -29,5 +31,10 @@ public class Food extends Product{
         System.out.println("| Price: " + this.price + " | Expiration date: " + this.expirationDate);
         System.out.println("| quantity : " + this.quantity);
         System.out.println("---------------------------------");
+    }
+
+    @Override
+    public String csvDescriptionProduct() {
+        return  (this.id + "," + this.name + "," + this.price + "," + quantity + "," + "Food" + "," + this.expirationDate);
     }
 }

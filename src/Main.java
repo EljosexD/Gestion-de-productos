@@ -11,8 +11,9 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         ProductRepository file = new ProductRepository();
-        int id, quantity, option,riskLeve;
-        String name,guarantee,expiration;
+        int id, quantity, option,riskLeve,searchId;
+        String name,guarantee,expiration,searchName;
+        boolean found;
         double price;
         Scanner answer = new Scanner(System.in);
         List<Product> listProduct = new ArrayList<>();
@@ -20,15 +21,19 @@ public class Main {
         System.out.println("|            Hi User!            |");
         System.out.println("+--------------------------------+");
         file.CreateFile();
-        //menu
+        if (file.verifFile()){
+            System.out.println("Uploading a product...");
+            listProduct = file.downloadProductFile();
+            System.out.println("Upload completed");
+        }
         do {
+            found = false;
             System.out.println("+--------------------------------+");
             System.out.println("|      Product Management        |");
             System.out.println("+--------------------------------+");
             System.out.println("|  1. Create product             |");
             System.out.println("|  2. View products              |");
             System.out.println("|  3. Update product             |");
-            System.out.println("|  4. Delete product             |");
             System.out.println("|  0. Back to main menu          |");
             System.out.println("+--------------------------------+");
             System.out.print("Choose an option: ");
@@ -86,6 +91,7 @@ public class Main {
                             price = answer.nextDouble();
                             System.out.print("Enter quantity: ");
                             quantity = answer.nextInt();
+                            answer.nextLine();
                             System.out.print("Enter guarantee date: ");
                             guarantee = answer.nextLine();
                             Utensils productUtensils= new Utensils(id,name,price,quantity,guarantee);
@@ -95,18 +101,57 @@ public class Main {
                     }
                     break;
                 case 2:
-                    System.out.println("Viewing all products...");
-
-                    for (Product p : listProduct) {
-
-                        System.out.println();
+                    System.out.println("+----------------------------------------------------------------+");
+                    System.out.println("|                     Choose an option below                     |");
+                    System.out.println("+----------------------------------------------------------------+");
+                    System.out.println("|   (1) Search by ID    (2) Search by Name    (3) Show All       |");
+                    System.out.println("+----------------------------------------------------------------+");
+                    System.out.print("Choose an option: ");
+                    option = answer.nextInt();
+                    answer.nextLine();
+                    switch (option){
+                        case 1:
+                            System.out.println("Insert by ID");
+                            searchId = answer.nextInt();
+                            answer.nextLine();
+                            for (Product p : listProduct) {
+                                if (p.getId() == searchId){
+                                    p.description();
+                                    found = true;
+                                    break;
+                                }
+                            }
+                            if(!found){
+                                System.out.println("product not find");
+                            }
+                            break;
+                        case 2:
+                            System.out.println("Insert by Name");
+                            searchName = answer.nextLine();
+                            for (Product p : listProduct) {
+                                if (p.getName().equalsIgnoreCase(searchName)){
+                                    p.description();
+                                    found = true;
+                                    break;
+                                }
+                            }
+                            if(!found){
+                                System.out.println("product not find");
+                            }
+                            break;
+                        case 3:
+                            System.out.println("Viewing all products...");
+                            for (Product p : listProduct) {
+                                p.description();
+                            }
+                            break;
+                        default:
+                            System.out.println("Invalid option");
                     }
                     break;
                 case 3:
                     System.out.println("Updating a product...");
-                    break;
-                case 4:
-                    System.out.println("Deleting a product...");
+                        file.uploadWriteFile(listProduct);
                     break;
                 default:
                     System.out.println("Invalid option. Try again.");

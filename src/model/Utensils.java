@@ -1,6 +1,8 @@
 package model;
 
-public class Utensils extends Product{
+import interfaces.IProduct;
+
+public class Utensils extends Product implements IProduct {
     private String guarantee;
 
     public Utensils() {
@@ -19,5 +21,10 @@ public class Utensils extends Product{
         System.out.println("| Price: " + this.price + " | guarantee: " + this.guarantee);
         System.out.println("| quantity : " + this.quantity);
         System.out.println("---------------------------------");
+    }
+
+    @Override
+    public String csvDescriptionProduct() {
+        return  (this.id + "," + this.name + "," + this.price + "," + quantity + "," + "Utensils" + "," + this.guarantee);
     }
 }

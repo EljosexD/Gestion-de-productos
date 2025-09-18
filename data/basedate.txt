@@ -1,1 +1,9 @@
-Id,Name,Price,Amount,Type
+Id,Name,Price,Amount,Type,SpecialAttribute
+1,jose,5000.0,5,Food,20/10/2025
+2,luna,5700.0,3,Cleaning,10
+3,cuchara,3000.0,7,Utensils,6 meses
+4,arroz,2500.0,10,Food,01/01/2026
+5,cloro,4500.0,4,Cleaning,9
+6,olla,12000.0,2,Utensils,1 año
+7,leche,3500.0,8,Food,15/11/2025
+8,PEDRO,2500.0,5,Food,20/10/2025
